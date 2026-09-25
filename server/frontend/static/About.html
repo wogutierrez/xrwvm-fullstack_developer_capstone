@@ -1,68 +1,98 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Link the style sheet here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Best Cars Dealership</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-    <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
-        </ul>
+<body class="bg-light">
+
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div class="container-fluid">
+        <h2 class="text-info m-0 pe-4">Dealerships</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link fs-5" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active fs-5" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-5" href="/contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
+    </nav>
+
+    <div class="card shadow-sm border-0 my-5 mx-auto" style="width: 85%;">
+      
+      <div class="banner p-4 text-center bg-white border-bottom" name="about-header">
+        <h1 class="fw-bold text-dark mb-3">Welcome to Best Cars Dealership</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 800px;">
+          Home to the finest automotive selection in North America. We specialize in sourcing, inspecting, and delivering premier domestic and imported vehicles at honest, competitive prices.
+        </p>
       </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
+
+      <div class="card-body p-4 p-md-5">
+        <h3 class="fw-bold text-center text-dark mb-4">Leadership & Specialists</h3>
+        
+        <div class="d-flex flex-row flex-wrap justify-content-center gap-4">
+          
+          <div class="card border-0 shadow-sm text-center p-3" style="width: 30%; min-width: 250px;">
+            <img class="card-img-top rounded-circle mx-auto my-3" src="/static/person.png" alt="Marcus Vance" style="width: 120px; height: 120px; object-fit: cover;">
+            <div class="card-body">
+              <p class="title fw-bold fs-5 text-dark mb-1">Marcus Vance</p>
+              <p class="text-primary fw-semibold small mb-3">General Manager & Founder</p>
+              <p class="card-text text-muted small">
+                Marcus brings over 20 years of automotive leadership, prioritizing complete inventory transparency and customer trust.
+              </p>
+              <p class="mb-0">
+                <a href="mailto:marcus.vance@bestcars.com" class="text-decoration-none text-dark fw-bold small">marcus.vance@bestcars.com</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="card border-0 shadow-sm text-center p-3" style="width: 30%; min-width: 250px;">
+            <img class="card-img-top rounded-circle mx-auto my-3" src="/static/person.png" alt="Elena Rostova" style="width: 120px; height: 120px; object-fit: cover;">
+            <div class="card-body">
+              <p class="title fw-bold fs-5 text-dark mb-1">Elena Rostova</p>
+              <p class="text-primary fw-semibold small mb-3">Head of Import Logistics</p>
+              <p class="card-text text-muted small">
+                Elena oversees international acquisition and compliance, ensuring imported vehicles meet strict performance standards.
+              </p>
+              <p class="mb-0">
+                <a href="mailto:elena.rostova@bestcars.com" class="text-decoration-none text-dark fw-bold small">elena.rostova@bestcars.com</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="card border-0 shadow-sm text-center p-3" style="width: 30%; min-width: 250px;">
+            <img class="card-img-top rounded-circle mx-auto my-3" src="/static/person.png" alt="David Miller" style="width: 120px; height: 120px; object-fit: cover;">
+            <div class="card-body">
+              <p class="title fw-bold fs-5 text-dark mb-1">David Miller</p>
+              <p class="text-primary fw-semibold small mb-3">Client Relations Director</p>
+              <p class="card-text text-muted small">
+                David streamlines client financing options to craft accessible purchasing plans suited to each client's unique budget.
+              </p>
+              <p class="mb-0">
+                <a href="mailto:david.miller@bestcars.com" class="text-decoration-none text-dark fw-bold small">david.miller@bestcars.com</a>
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
-        </div>
-      </div>
+    </div>
+  </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    
-</div>
-
+</body>
 </html>
