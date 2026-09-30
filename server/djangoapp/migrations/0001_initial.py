@@ -69,8 +69,12 @@ class Migration(migrations.Migration):
                     models.IntegerField(
                         default=2023,
                         validators=[
-                            django.core.validators.MaxValueValidator(2023),
-                            django.core.validators.MinValueValidator(2015),
+                            django.core.validators.MaxValueValidator(
+                                2023
+                            ),
+                            django.core.validators.MinValueValidator(
+                                2015
+                            ),
                         ]
                     )
                 ),
