@@ -26,8 +26,14 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','https://wogutierrez-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
-CSRF_TRUSTED_ORIGINS = ['https://wogutierrez-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.proxy.cognitiveclass.ai',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000','https://*.proxy.cognitiveclass.ai',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
@@ -62,6 +68,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR,'frontend/static'),
             os.path.join(BASE_DIR,'frontend/build'),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
