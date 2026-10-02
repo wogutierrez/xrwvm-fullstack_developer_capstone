@@ -1,7 +1,7 @@
 # Uncomment the required imports before adding the code
-
 import logging
 import json
+from django.contrib.auth.models import User
 
 # from django.shortcuts import render
 from django.http import JsonResponse
@@ -14,6 +14,40 @@ from .populate import initiate
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
+
+
+@csrf_exempt
+def registration(request):
+    """Handle sign up request."""
+    if request.method == "POST":
+        data = json.loads(request.body)
+        username = data['userName']
+        password = data['password']
+        first_name = data['firstName']
+        last_name = data['lastName']
+        email = data['email']
+        
+        username_exist = False
+        try:
+            User.objects.get(username=username)
+            username_exist = True
+        except User.DoesNotExist:
+            logger.debug("%s is a new user", username)
+
+        if not username_exist:
+            user = User.objects.create_user(
+                username=username,
+                first_name=first_name,
+                last_name=last_name,
+                password=password,
+                email=email
+            )
+            login(request, user)
+            return JsonResponse({"userName": username, "status": "Authenticated"})
+        
+        return JsonResponse({"userName": username, "error": "Already Registered"})
+    
+    return JsonResponse({"status": 400, "message": "Bad Request: Expected POST"})
 
 
 @csrf_exempt
@@ -30,26 +64,35 @@ def login_user(request):
     return JsonResponse(data)
 
 
+def logout_request(request):
+    """Handle logout request."""
+    logout(request)
+    data = {"userName": ""}
+    return JsonResponse(data)
+
+
 def get_dealerships(request, state="All"):
     """Render the index page with a list of dealerships."""
-    if state == "All":
+    if(state == "All"):
         endpoint = "/fetchDealers"
     else:
-        endpoint = "/fetchDealers/" + state
+        endpoint = "/fetchDealers/"+state
     dealerships = get_request(endpoint)
-    return JsonResponse({"status": 200, "dealers": dealerships})
-
+    return JsonResponse({"status":200,"dealers":dealerships})
+    
 
 def get_dealer_reviews(request, dealer_id):
-    """Render the reviews of a dealer."""
-    if dealer_id:
-        endpoint = "/fetchReviews/dealer/" + str(dealer_id)
+    # if dealer id has been provided
+    if(dealer_id):
+        endpoint = "/fetchReviews/dealer/"+str(dealer_id)
         reviews = get_request(endpoint)
         for review_detail in reviews:
-            sentiment = analyze_review_sentiments(review_detail['review'])
-            review_detail['sentiment'] = sentiment['sentiment']
-        return JsonResponse({"status": 200, "reviews": reviews})
-    return JsonResponse({"status": 400, "message": "Bad Request"})
+            response = analyze_review_sentiments(review_detail['review'])
+            print(response)
+            review_detail['sentiment'] = response['sentiment']
+        return JsonResponse({"status":200,"reviews":reviews})
+    else:
+        return JsonResponse({"status":400,"message":"Bad Request"})
 
 
 def get_dealer_details(request, dealer_id):
@@ -88,3 +131,4 @@ def get_cars(request):
         for cm in car_models
     ]
     return JsonResponse({"CarModels": cars})
+
